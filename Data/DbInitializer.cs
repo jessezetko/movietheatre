@@ -26,6 +26,9 @@ namespace movietheatre.Data
                 new Product {name="Pretzel", description="Baked soft bread pretzels topped with salt or served plain. Comes with nacho dip.", price=8.00},
                 new Product {name="Hot Dog", description="Roasted hot dog served with optional condiments.", price=5.00}
             };
+
+            context.Product.AddRange(products);
+            context.SaveChanges();
         }
     }
 }
