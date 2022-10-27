@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using movietheatre.Models;
 
 namespace movietheatre.Data
 {
@@ -12,5 +13,7 @@ namespace movietheatre.Data
             : base(options)
         {
         }
+        public DbSet<movietheatre.Models.Cart> Cart { get; set; }
+        public DbSet<movietheatre.Models.Product> Product { get; set; }
     }
 }
