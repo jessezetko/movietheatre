@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    double total = 0;
 }
 
 <h1>Index</h1>
@@ -19,20 +20,24 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cart[0].product)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cart[0].quantity)
+            <th>             
+                @Html.DisplayNameFor(model => model.Cart[0].quantity)               
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Cart) {
+@foreach (var item in Model.Cart)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.customer.fname)
             </td>
             <td>
+                @{ 
                 @Html.DisplayFor(modelItem => item.product.name)
+                    total += item.quantity * item.product.price;
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)
@@ -46,3 +51,8 @@
 }
     </tbody>
 </table>
+
+<br/>
+
+<p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
+<p><a href="">Proceed to Checkout</a></p>

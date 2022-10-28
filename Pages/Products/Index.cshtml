@@ -23,7 +23,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Product) {
+@foreach (var item in Model.Product)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.name)
@@ -32,7 +33,10 @@
                 @Html.DisplayFor(modelItem => item.description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.price)
+                @{
+                    var itemprice = "$" + String.Format("{0:0.00}", item.price);
+                    @Html.DisplayFor(modelItem => itemprice)
+                }
             </td>
             <td>
                 <a asp-page="/checkout/create" asp-route-itemid="@item.ID">Add to Cart</a>
