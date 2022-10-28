@@ -10,9 +10,11 @@ namespace movietheatre.Models
     {
         public int ID { get; set; }
 
+        [Display(Name ="Customer Name:")]
         public int customerID { get; set; }
         public Customer customer { get; set; }
 
+        [Display(Name="Product:")]
         public int productID { get; set; }
         public Product product { get; set; }
 

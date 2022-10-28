@@ -38,8 +38,8 @@ namespace movietheatre.Pages.checkout
             {
                 return NotFound();
             }
-           ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "ID");
-           ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "ID");
+           ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "fname");
+           ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "name");
             return Page();
         }
 

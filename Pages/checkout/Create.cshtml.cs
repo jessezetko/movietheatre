@@ -19,10 +19,10 @@ namespace movietheatre.Pages.checkout
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int itemid)
         {
-        ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "fname");
-        ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "name");
+            ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "fname");
+            ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "name", itemid);
             return Page();
         }
 

@@ -23,6 +23,7 @@ namespace movietheatre.Pages.Products
 
         public IActionResult OnGet()
         {
+            var x = ViewData["itemID"];
             return Page();
         }
 
