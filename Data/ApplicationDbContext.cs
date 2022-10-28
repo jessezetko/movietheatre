@@ -15,5 +15,6 @@ namespace movietheatre.Data
         }
         public DbSet<movietheatre.Models.Cart> Cart { get; set; }
         public DbSet<movietheatre.Models.Product> Product { get; set; }
+        public DbSet<movietheatre.Models.Customer> Customer { get; set; }
     }
 }

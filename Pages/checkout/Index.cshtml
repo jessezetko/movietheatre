@@ -29,10 +29,10 @@
 @foreach (var item in Model.Cart) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.customer.ID)
+                @Html.DisplayFor(modelItem => item.customer.fname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.product.ID)
+                @Html.DisplayFor(modelItem => item.product.name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)

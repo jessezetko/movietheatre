@@ -21,8 +21,8 @@ namespace movietheatre.Pages.checkout
 
         public IActionResult OnGet()
         {
-        ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "ID");
-        ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "ID");
+        ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "fname");
+        ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "name");
             return Page();
         }
 
