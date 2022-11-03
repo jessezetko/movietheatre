@@ -17,5 +17,7 @@ namespace movietheatre.Models
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:0.00}")]
         public double price { get; set; }
+
+    
     }
 }

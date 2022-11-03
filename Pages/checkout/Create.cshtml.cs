@@ -32,6 +32,10 @@ namespace movietheatre.Pages.checkout
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+
+            var customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
+            Cart.customerID = customerid;
+
             if (!ModelState.IsValid)
             {
                 return Page();
