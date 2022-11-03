@@ -34,9 +34,30 @@ namespace movietheatre.Pages.checkout
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            // add check to see if user is logged in
-            var customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
-            Cart.customerID = customerid;
+            var customerid = 0;
+
+            if (_context.Customer.FirstOrDefault(x => x.email == User.Identity.Name) != null)
+            {
+                customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
+                Cart.customerID = customerid;
+            }
+            else
+            {
+                // create user if doesn't exist
+                var Customers = new Customer[]
+                {
+                    new Customer {email = User.Identity.Name, dob=DateTime.Now, postal="1111", fname="test" , lname="test2"}
+                };
+
+                _context.Customer.AddRange(Customers);
+
+                _context.SaveChanges();
+
+                customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
+                Cart.customerID = customerid;
+            }
+
+            
 
             if (!ModelState.IsValid)
             {
