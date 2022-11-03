@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using movietheatre.Models;
 
 namespace movietheatre.Pages.checkout
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly movietheatre.Data.ApplicationDbContext _context;
@@ -32,7 +34,7 @@ namespace movietheatre.Pages.checkout
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-
+            // add check to see if user is logged in
             var customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
             Cart.customerID = customerid;
 

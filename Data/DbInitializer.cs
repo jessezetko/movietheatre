@@ -30,16 +30,7 @@ namespace movietheatre.Data
                 };
                 context.Product.AddRange(products);
             }
-            if (context.Customer.Any() != true)
-            {
-                var customers = new Customer[]
-                {
-                    new Customer {fname="Matthew", lname="Weil", postal="1234", email="matthewweil@mathewweil.com", dob=DateTime.Parse("01/01/2002")},
-                    new Customer {fname="Jaya", lname="Jensen", postal="1234", email="jayajensen@jayajensen.com", dob=DateTime.Parse("01/01/2002")},
-                    new Customer {fname="Jesse", lname="Zetko", postal="1234", email="jessezetko@jessezetko.com", dob=DateTime.Parse("01/01/2002")}
-                };
-                context.Customer.AddRange(customers);
-            }
+
             context.SaveChanges();
         }
     }
