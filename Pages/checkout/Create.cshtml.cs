@@ -43,21 +43,11 @@ namespace movietheatre.Pages.checkout
             }
             else
             {
-                var url = "../Customers/Create";
                 // create user if doesn't exist
+
+                var url = "../Customers/Create";
+
                 return RedirectToPage(url);
-                /*
-                var Customers = new Customer[]
-                {
-                    new Customer {email = User.Identity.Name, dob=DateTime.Now, postal="1111", fname="test" , lname="test2"}
-                };
-
-                _context.Customer.AddRange(Customers);
-
-                _context.SaveChanges();
-
-                customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
-                Cart.customerID = customerid; */
             }
 
             

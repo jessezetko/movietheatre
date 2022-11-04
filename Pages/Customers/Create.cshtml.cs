@@ -14,24 +14,30 @@ namespace movietheatre.Pages.Customers
     [Authorize]
     public class CreateModel : PageModel
     {
+
         private readonly movietheatre.Data.ApplicationDbContext _context;
 
-        public CreateModel(movietheatre.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
 
         [BindProperty]
         public Customer Customer { get; set; }
 
-        public IActionResult OnGet(string customeremail)
+        public CreateModel(movietheatre.Data.ApplicationDbContext context)
         {
-            
+            _context = context;
+            // checkIfExists();
+  }
+
+      /*  public RedirectToPageResult checkIfExists()
+        {
+            // Eventually add functionality to make suers unable to add more users
+        }
+      */
+
+        public IActionResult OnGet()
+        {
 
             return Page();
         }
-
-
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -41,6 +47,7 @@ namespace movietheatre.Pages.Customers
                 return Page();
             }
 
+            Customer.email = User.Identity.Name;
             _context.Customer.Add(Customer);
             await _context.SaveChangesAsync();
 
