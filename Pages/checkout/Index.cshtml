@@ -27,8 +27,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Cart)
-{
+@foreach (var item in Model.Cart) if (item.customer.email == User.Identity.Name)
+{ 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.customer.fname)
@@ -55,4 +55,5 @@
 <br/>
 
 <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
-<p><a href="">Proceed to Checkout</a></p>
+
+<a asp-page="../Payment/Create" asp-route-itemid="@Model.Cart">Proceed to Payment</a>
