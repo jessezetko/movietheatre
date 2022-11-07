@@ -28,6 +28,8 @@ namespace movietheatre.Pages.OrderHeaders
         [BindProperty]
         public OrderHeader OrderHeader { get; set; }
 
+ 
+
         public async Task OnGetAsync()
         { 
             Cart = await _context.Cart
@@ -41,11 +43,17 @@ namespace movietheatre.Pages.OrderHeaders
 
             
             ViewData["customerID"] = new SelectList(_context.Customer, "ID", "fname", lookup);
-            
 
+            initializeorders();
 
         }
 
+        public void initializeorders()
+        {
+            var products = new OrderDetails[]{
+                new OrderDetails {}
+            };
+        }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
