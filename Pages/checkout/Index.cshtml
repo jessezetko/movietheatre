@@ -6,6 +6,8 @@
     double total = 0;
 }
 
+<!-- Derrived from Cart Model -->
+
 <h1>Cart</h1>
 
 <p>
@@ -56,4 +58,4 @@
 
 <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
 
-<a asp-page="../Payment/Create" asp-route-itemid="@Model.Cart">Proceed to Payment</a>
+<a asp-page="../Payment/Create">Proceed to Payment</a>

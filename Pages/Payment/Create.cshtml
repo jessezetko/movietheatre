@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    double total = 0;
 }
 
 <h1>Payment</h1>
@@ -13,16 +14,16 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="OrderHeader.date" class="control-label"></label>
-                <input asp-for="OrderHeader.date" value="@DateTime.Now" class="form-control" />
+                <label asp-for="OrderHeader.date" class="control-label">Date</label>
+                <input asp-for="OrderHeader.date" value="@DateTime.Today" class="form-control" />
                 <span asp-validation-for="OrderHeader.date" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OrderHeader.customerID" class="control-label">Customer</label>
-                <select asp-for="OrderHeader.customerID" class ="form-control" asp-items="ViewBag.customerID"></select>
+            <div class="form-group" >
+                <label asp-for="OrderHeader.customerID" class="control-label">Customer Name</label>
+                <select asp-for="OrderHeader.customerID" disabled class ="form-control" asp-items="ViewBag.customerID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="OrderHeader.address" class="control-label"></label>
+                <label asp-for="OrderHeader.address" class="control-label">Address</label>
                 <input asp-for="OrderHeader.address" class="form-control" />
                 <span asp-validation-for="OrderHeader.address" class="text-danger"></span>
             </div>
