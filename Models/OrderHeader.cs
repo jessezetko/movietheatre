@@ -22,6 +22,8 @@ namespace movietheatre.Models
 
         public string state { get; set; }
 
+        [DataType(DataType.CreditCard)]
+        [Range(16, 16, ErrorMessage = "Card number must be 16 digits")]
         public int cardnumber { get; set; }
 
         public int orderDetailsID { get; set; }

@@ -3,11 +3,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace movietheatre.Data
 {
     public class DbInitializer
     {
+
+        private readonly ApplicationDbContext _db;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public DbInitializer(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext db)
+        {
+            _db = db;
+            _userManager = userManager;
+            _roleManager = roleManager;
+
+        }
+
         public static void Initialize(ApplicationDbContext context)
         {
             if (context.Product.Any() && context.Customer.Any())
@@ -30,7 +45,13 @@ namespace movietheatre.Data
                 };
                 context.Product.AddRange(products);
             }
+            if (context.Customer.Any() != true)
+            {
+                
+            }
 
+
+            
             context.SaveChanges();
         }
     }
