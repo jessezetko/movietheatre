@@ -27,6 +27,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/checkout/index">Cart</a>
                         </li>
+                        @if (User.Identity.Name == "admin@admin.com"){ 
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/admin/index">Admin View</a>
+                        </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
