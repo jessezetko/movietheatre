@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace movietheatre
 {
@@ -22,10 +24,11 @@ namespace movietheatre
 
         private static void CreateDbIfNotExists(IHost host)
         {
+
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
+                
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();

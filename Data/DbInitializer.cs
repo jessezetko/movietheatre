@@ -20,7 +20,6 @@ namespace movietheatre.Data
             _db = db;
             _userManager = userManager;
             _roleManager = roleManager;
-
         }
 
         public static void Initialize(ApplicationDbContext context)
@@ -48,11 +47,19 @@ namespace movietheatre.Data
             if (context.Customer.Any() != true)
             {
                 
+                var user = new IdentityUser { Email = "admin@admin.com", UserName="admin", EmailConfirmed=true};
+                //var newPassword = userManager.AddPasswordAsync(user, "password");
             }
-
-
+            
+            
             
             context.SaveChanges();
         }
+
+        public void setPasswowrd()
+        {
+            
+        }
+
     }
 }
