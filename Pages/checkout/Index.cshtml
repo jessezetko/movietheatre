@@ -55,4 +55,8 @@
 <br/>
 
 <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
-<p><a href="">Proceed to Checkout</a></p>
+@{ if (total > 0)
+    {
+<p><a href="Receipt">Proceed to Checkout</a></p>
+        }
+    }

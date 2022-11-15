@@ -16,7 +16,9 @@ namespace movietheatre.Models
         public int productsID { get; set; }
         public Product Products { get; set; }
 
-        public int OrderInformationID { get; set; }
+
+        //nav props
+        public int OrderHeaderId { get; set; }
         public OrderHeader OrderHeader { get; set; }
 
     }

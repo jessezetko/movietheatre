@@ -24,7 +24,7 @@ namespace movietheatre.Models
 
         public int cardnumber { get; set; }
 
-        public int orderDetailsID { get; set; }
+        //nav props
         public List<OrderDetails> orderDetails { get; set; }
     }
 }

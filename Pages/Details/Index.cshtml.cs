@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using movietheatre.Data;
 using movietheatre.Models;
 
-namespace movietheatre.Pages.checkout
+namespace movietheatre.Pages.Details
 {
     public class IndexModel : PageModel
     {
@@ -19,16 +19,13 @@ namespace movietheatre.Pages.checkout
             _context = context;
         }
 
-        public IList<Cart> Cart { get;set; }
-
+        public IList<OrderDetails> OrderDetails { get;set; }
 
         public async Task OnGetAsync()
         {
-            Cart = await _context.Cart
-                .Include(c => c.customer)
-                .Include(c => c.product).ToListAsync();
+            OrderDetails = await _context.OrderDetails
+                .Include(o => o.OrderHeader)
+                .Include(o => o.Products).ToListAsync();
         }
-
-      
     }
 }

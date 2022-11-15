@@ -1,0 +1,48 @@
+﻿@page
+@model movietheatre.Pages.Orders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderHeader[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderHeader[0].customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderHeader[0].address)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderHeader) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            
+            <td>
+                
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> 
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

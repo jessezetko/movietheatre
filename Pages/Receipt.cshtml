@@ -1,0 +1,80 @@
+﻿@page
+@model movietheatre.Pages.ReceiptModel
+@{
+    double total = 0.0;
+
+    <h2> Review </h2>
+    <h4> First Name: @Html.DisplayFor(model => model.Cart[0].customer.fname)</h4>
+    <h4> Last Name : @Html.DisplayFor(model => model.Cart[0].customer.lname) </h4>
+
+    <table class="table">
+        
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                       Quantity
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cart)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.quantity)
+                        </td>
+                        <td>
+                            @{
+                                var itemprice = "$" + String.Format("{0:0.00}", item.product.price);
+                                total += item.quantity * item.product.price;
+                                @Html.DisplayFor(modelItem => itemprice)
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
+
+        <h2> Enter Shipping Details </h2>
+        <form method="post">
+
+            <label for="c">Card Number:</label><br>
+            <input type="number" name="cnum" /> <br />
+
+            <label for="ad">Address:</label><br>
+            <input type="text" name="addy" /> <br />
+
+            <label for="cy">City:</label><br>
+            <input type="text" name="city" /> <br />
+
+            <label for="st">State:</label><br>
+            <input type="text" name="state" /> <br />
+
+            <label for="dt">Date:</label><br>
+            <input type="date" name="date" /> <br /><br /> <br />
+
+
+            <input type="submit" value="Submit Order">
+        </form>
+
+        }
