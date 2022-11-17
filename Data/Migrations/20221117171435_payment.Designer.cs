@@ -10,8 +10,8 @@ using movietheatre.Data;
 namespace movietheatre.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221108171554_header")]
-    partial class header
+    [Migration("20221117171435_payment")]
+    partial class payment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

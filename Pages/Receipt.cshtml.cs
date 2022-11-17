@@ -68,7 +68,8 @@ namespace movietheatre.Pages
             orderHeader.state = state;
             orderHeader.date = date;
 
-
+            _context.OrderHeader.Add(orderHeader);
+            _context.SaveChanges();
             
 
             foreach (var item in Cart)
@@ -86,20 +87,21 @@ namespace movietheatre.Pages
                 orderDetails.Add(_orderDetails);
                 _context.Cart.Remove(item);
                 _context.OrderDetails.Add(_orderDetails);
-
+                _context.SaveChanges();
             }
 
 
 
             orderHeader.orderDetails = orderDetails;
 
+            /*
             if (ModelState.IsValid)
             {
                 _context.OrderHeader.Add(orderHeader);
                 
                 _context.SaveChanges();
             }
-
+            */
 
             await _context.SaveChangesAsync();
 

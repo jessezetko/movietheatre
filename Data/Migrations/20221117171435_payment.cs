@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace movietheatre.Data.Migrations
 {
-    public partial class header : Migration
+    public partial class payment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
