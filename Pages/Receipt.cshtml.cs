@@ -66,20 +66,21 @@ namespace movietheatre.Pages
             orderHeader.address = addy;
             orderHeader.city = city;
             orderHeader.state = state;
-            orderHeader.date = date;
+            orderHeader.date = DateTime.Now;
 
             _context.OrderHeader.Add(orderHeader);
             _context.SaveChanges();
             
 
-            foreach (var item in Cart)
-            {
+            foreach (var item in Cart) if (item.customer.email == User.Identity.Name)
+                {
                 OrderDetails _orderDetails = new OrderDetails();
 
                 _orderDetails.OrderHeader = orderHeader;
                 _orderDetails.OrderHeaderId = orderHeader.ID;
                 _orderDetails.productsID = item.productID;
                 _orderDetails.Products = item.product;
+                
                 _orderDetails.total = (int)(item.product.price * item.quantity);
                 _orderDetails.description = item.product.description;
 

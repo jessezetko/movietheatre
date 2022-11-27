@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using movietheatre.Models;
 
 namespace movietheatre.Pages.Orders
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly movietheatre.Data.ApplicationDbContext _context;
@@ -26,7 +28,8 @@ namespace movietheatre.Pages.Orders
             OrderHeader = await _context.OrderHeader
                 .Include(o => o.customer)
                 .Include(o => o.orderDetails).ToListAsync();
-
+           
+          
            
         }
     }

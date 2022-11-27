@@ -2,10 +2,8 @@
 @model movietheatre.Pages.ReceiptModel
 @{
     double total = 0.0;
-
-    <h2> Review </h2>
-    <h4> First Name: @Html.DisplayFor(model => model.Cart[0].customer.fname)</h4>
-    <h4> Last Name : @Html.DisplayFor(model => model.Cart[0].customer.lname) </h4>
+}
+    <h2>Checkout Information </h2>
 
     <table class="table">
         
@@ -27,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Cart)
+                @foreach (var item in Model.Cart) if (item.customer.email == User.Identity.Name)
                 {
                     <tr>
                         <td>
@@ -51,11 +49,19 @@
                 }
             </tbody>
         </table>
-        <br />
 
         <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
 
-        <h2> Enter Shipping Details </h2>
+        <h2> Enter Billing Information </h2>
+
+        First Name: @Html.DisplayFor(model => model.Cart[0].customer.fname)
+
+        <br />
+
+        Last Name : @Html.DisplayFor(model => model.Cart[0].customer.lname)
+
+        <br /><br />
+
         <form method="post">
 
             <label for="c">Card Number:</label><br>
@@ -70,11 +76,9 @@
             <label for="st">State:</label><br>
             <input type="text" name="state" /> <br />
 
-            <label for="dt">Date:</label><br>
-            <input type="date" name="date" /> <br /><br /> <br />
-
+            <br />
 
             <input type="submit" value="Submit Order">
         </form>
 
-        }
+   

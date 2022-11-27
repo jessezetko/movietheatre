@@ -4,55 +4,55 @@
 @{
     ViewData["Title"] = "Index";
     double total = 0;
+    double price = 0;
 }
 
-<h1>Index</h1>
+<h1>Shopping Cart</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cart[0].customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cart[0].product)
+                Product
             </th>
             <th>             
-                @Html.DisplayNameFor(model => model.Cart[0].quantity)               
+                Quantity         
+            </th>
+            <th>
+                Price
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Cart)
-{
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.customer.fname)
-            </td>
-            <td>
-                @{ 
-                @Html.DisplayFor(modelItem => item.product.name)
-                    total += item.quantity * item.product.price;
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Cart) if (item.customer.email == User.Identity.Name)
+            {
+               price = item.quantity * item.product.price;
+                
+                <tr>
+                    <td>
+                        @{
+                            @Html.DisplayFor(modelItem => item.product.name)
+                            total += item.quantity * item.product.price;
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @String.Format("${0:0.00}", price)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+                 price = 0;
+         }
     </tbody>
 </table>
 
-<br/>
 
 <p>Total:&nbsp;$@String.Format("{0:0.00}", total)</p>
 @{ if (total > 0)

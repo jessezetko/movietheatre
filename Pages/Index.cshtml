@@ -12,15 +12,17 @@
     .carousel-control-prev /*, .carousel-indicators */ {
         filter: invert(100%);
     }
-    .carousel .carousel-item{
-        height:800px;
+
+    .carousel .carousel-item {
+        height: 800px;
     }
+
     .carousel-item img {
-        position:absolute;
-        top:0;
-        left:0;
-        max-height:800px;
-        object-fit:scale-down;
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-height: 800px;
+        object-fit: scale-down;
     }
 </style>
 
@@ -36,17 +38,21 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://flxt.tmsimg.com/assets/p15829_p_v8_as.jpg" class="d-block w-100" alt="Forrest Gump"></a>
+                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/738d0a64-5634-4d9d-9be3-d8c1b8db813d/d30919n-c2f0a338-0edd-4915-b205-abeb9a4200c7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzczOGQwYTY0LTU2MzQtNGQ5ZC05YmUzLWQ4YzFiOGRiODEzZFwvZDMwOTE5bi1jMmYwYTMzOC0wZWRkLTQ5MTUtYjIwNS1hYmViOWE0MjAwYzcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.qiKQD8RC4aVebwyTLT4Q57dNUOY6apBeOh9m_tDP9ek" class="d-block w-100" alt="Forrest Gump"></a>
             </div>
             <div class="carousel-item">
-                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://horrornovelreviews.files.wordpress.com/2014/01/movie-poster-the-thing.jpg" class="d-block w-100" alt="The Thing"></a>
-</div>
+                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://m.media-amazon.com/images/M/MV5BZWQ5YzU5MTMtZmY1OS00Zjc1LWFjN2QtMzY4ZmRjNzFlNzQ1XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" class="d-block w-100" alt="The Thing"></a>
+            </div>
             <div class="carousel-item">
-                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@@._V1_.jpg" class="d-block w-100" alt="Goodfellas"></a>
-</div>
+                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://m.media-amazon.com/images/M/MV5BZjE2ZWIwMWEtNGFlMy00ZjYzLWEzOWEtYzQ0MDAwZDRhYzNjXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" class="d-block w-100" alt="Goodfellas"></a>
+            </div>
+            <div class="carousel-item">
+                <a asp-page="/checkout/create" asp-route-itemid="2"><img src="https://m.media-amazon.com/images/M/MV5BNzEzOTZjYjYtMTI3MS00NWE1LWIyZTktYTRlMTBlYjlkMjZiXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" class="d-block w-100" alt="Goodfellas"></a>
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

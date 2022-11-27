@@ -9,58 +9,49 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using movietheatre.Data;
 using movietheatre.Models;
 
-namespace movietheatre.Pages.checkout
+namespace movietheatre.Pages.Customers
 {
     [Authorize]
     public class CreateModel : PageModel
     {
+
         private readonly movietheatre.Data.ApplicationDbContext _context;
+
+
+        [BindProperty]
+        public Customer Customer { get; set; }
 
         public CreateModel(movietheatre.Data.ApplicationDbContext context)
         {
             _context = context;
+            // checkIfExists();
         }
 
-        public IActionResult OnGet(int itemid)
+        /*  public RedirectToPageResult checkIfExists()
+          {
+              // Eventually add functionality to make suers unable to add more users
+          }
+        */
+
+        public IActionResult OnGet()
         {
-            ViewData["customerID"] = new SelectList(_context.Set<Customer>(), "ID", "fname");
-            ViewData["productID"] = new SelectList(_context.Set<Product>(), "ID", "name", itemid);
+
             return Page();
         }
-
-        [BindProperty]
-        public Cart Cart { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            var customerid = 0;
-
-            if (_context.Customer.FirstOrDefault(x => x.email == User.Identity.Name) != null)
-            {
-                customerid = _context.Customer.FirstOrDefault(x => x.email == User.Identity.Name).ID;
-                Cart.customerID = customerid;
-            }
-            else
-            {
-                // create user if doesn't exist
-
-                var url = "../Customers/Create";
-
-                return RedirectToPage(url);
-            }
-
-
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Cart.Add(Cart);
+            Customer.email = User.Identity.Name;
+            _context.Customer.Add(Customer);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Index");
         }
     }
 }
