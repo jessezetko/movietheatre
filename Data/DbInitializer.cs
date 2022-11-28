@@ -50,6 +50,12 @@ namespace movietheatre.Data
                 user.PasswordHash = pHasher.HashPassword(user, "password");
                 context.Users.AddRange(user);
 
+                var pHasher2 = new PasswordHasher<IdentityUser>();
+                var user2 = new IdentityUser { Email = "test@test.com", UserName = "test@test.com", EmailConfirmed = true, NormalizedUserName = "TEST@TEST.COM", NormalizedEmail = "TEST@TEST.COM" };
+                user2.SecurityStamp = Guid.NewGuid().ToString();
+                user2.PasswordHash = pHasher2.HashPassword(user2, "password");
+                context.Users.AddRange(user2);
+
                 var role = new IdentityRole { Name = "admin", NormalizedName = "ADMIN"};
                 context.Roles.Add(role);
 
