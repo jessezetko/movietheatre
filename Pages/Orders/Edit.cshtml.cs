@@ -25,6 +25,11 @@ namespace movietheatre.Pages.Orders
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (User.Identity.Name != "admin@admin.com")
+            {
+                return RedirectToPage("../Index");
+            }
+
             if (id == null)
             {
                 return NotFound();

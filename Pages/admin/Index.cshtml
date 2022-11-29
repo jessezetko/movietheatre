@@ -4,50 +4,224 @@
     double total = 0;
 }
 
-<h1>Orders</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Date
-            </th>
+<!-- bootstrap accordion -->
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Orders
+                </button>
+            </h5>
+        </div>
 
-            <th>
-                Total
-            </th>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+                <h1>Orders</h1>
+
+                <form>
+                    <p>
+                        Customer First Name: <input type="text" asp-for="fname" />
+                    </p>
+                    <p>
+                        Customer Last Name: <input type="text" asp-for="lname" />
+
+                    </p>
+                    <p>
+                        Order Date: <input type="date" asp-for="orderDate" value="@DateTime.Today" />
+                        <input type="submit" value="Filter" />
+                    </p>
+                </form>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Customer First Name
+                            </th>
+
+                            <th>
+                                Customer Last Name
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
 
-        @foreach (var item in Model.OrderHeader)
-            {
+                        @foreach (var item in Model.OrderHeader)
+                        {
 
-                foreach (var item2 in item.orderDetails)
-                {
-                    total += item2.total;
-                }
+                            foreach (var item2 in item.orderDetails)
+                            {
+                                total += item2.total;
+                            }
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.date)
-                    </td>
+                            <tr>
 
-                    <td>
-                        $@String.Format("{0:N2}", total)
-                    </td>
-                    <td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.fname)
+                                </td>
 
-                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.lname)
+                                </td>
 
-                    </td>
-                </tr>
+                                <td>
+                                    $@String.Format("{0:N2}", total)
+                                </td>
+                                <td>
 
-                total = 0;
+                                    <a asp-page="../Orders/Details" asp-route-id="@item.ID">Details</a>
 
-            }
-    </tbody>
-</table>
+                                </td>
+                            </tr>
+
+                            total = 0;
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Customers
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+
+                <h2> Customers </h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date of Birth</th>
+                            <th>Email</th>
+                            <th>Postal</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var customerItem in Model.Customer)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.fname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.lname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.dob)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => customerItem.postal)
+                            </td>
+
+                        </tr>
+                        }
+
+                    </tbody>                
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Products
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <h3"> Products </h3">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach (var productItem in Model.Product)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => productItem.ID)
+                            </td>
+                            <td>
+                                <img style="max-height:50px;" src="@productItem.image" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => productItem.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => productItem.description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => productItem.price)
+                            </td>
+                            <td>
+                                <a asp-page="../Products/Edit" asp-route-id="@productItem.ID">Edit</a>
+                            </td>
+                            <td>
+                                <a asp-page="../Products/Details" asp-route-id="@productItem.ID">Details</a>
+                            </td>
+                            <td>
+                                <a asp-page="../Products/Delete" asp-route-id="@productItem.ID">Delete</a>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <a asp-page="../Products/Create">Create</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 

@@ -30,9 +30,25 @@ namespace movietheatre.Pages.Products
         [BindProperty]
         public Product Product { get; set; }
 
+        public async Task<IActionResult> OnGetAsync()
+        {
+            if (User.Identity.Name != "admin@admin.com")
+            {
+                return RedirectToPage("../Index");
+            }
+
+            return Page();
+        }
+
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+
+            if (User.Identity.Name != "admin@admin.com")
+            {
+                return RedirectToPage("../Index");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();

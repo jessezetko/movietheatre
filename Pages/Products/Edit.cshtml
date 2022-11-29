@@ -15,19 +15,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Product.ID" />
             <div class="form-group">
-                <label asp-for="Product.name" class="control-label"></label>
+                <label asp-for="Product.name" class="control-label">Name</label>
                 <input asp-for="Product.name" class="form-control" />
                 <span asp-validation-for="Product.name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Product.description" class="control-label"></label>
+                <label asp-for="Product.description" class="control-label">Description</label>
                 <input asp-for="Product.description" class="form-control" />
                 <span asp-validation-for="Product.description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Product.price" class="control-label"></label>
+                <label asp-for="Product.price" class="control-label">Price</label>
                 <input asp-for="Product.price" class="form-control" />
                 <span asp-validation-for="Product.price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.image" class="control-label">Image URL</label>
+                <input asp-for="Product.image" class="form-control" />
+                <span asp-validation-for="Product.image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -65,16 +65,16 @@
         <form method="post">
 
             <label for="c">Card Number:</label><br>
-            <input type="number" name="cnum" /> <br />
+            <input type="text" name="cnum" pattern=".{16,16}" required title="16 digits required" /> <br />
 
             <label for="ad">Address:</label><br>
-            <input type="text" name="addy" /> <br />
+            <input type="text" name="addy" required/> <br />
 
             <label for="cy">City:</label><br>
-            <input type="text" name="city" /> <br />
+            <input type="text" name="city" required/> <br />
 
             <label for="st">State:</label><br>
-            <input type="text" name="state" /> <br />
+            <input type="text" name="state" required/> <br />
 
             <br />
 
